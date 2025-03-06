@@ -1,0 +1,131 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Data files
+*.csv
+*.pth
+*.pt
+
+# Environments
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+
+# Jupyter
+.ipynb_checkpoints
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs and outputs
+logs/
+*.log
+*.out
+*.tmp
+
+# Local development
+.env.local
+.env.development
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+
+# Dependency directories
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Vercel
+.vercel/
+
+# PWA
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map
+
+# TypeScript
+*.tsbuildinfo
+
+# Weights & Biases
+wandb/
+.wandb/
+*.wandb
+wandb-debug.log
+wandb-summary.json
+artifacts/
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Credentials and secrets
+*.pem
+*.key
+*.crt
+*.cert
+credentials.json
+*_rsa
+*_dsa
+*_ed25519
+*_ecdsa
+service-account.json
+
+# Generated documentation
+/docs/_build/
+/docs/site/
+/site/
+
+# Miscellaneous
+.cache/
+.history/
+.pytest_cache/
+htmlcov/
+.coverage
+coverage/
+scratch/
+tmp/
+
+# Virtual Environment
+.python-version

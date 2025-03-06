@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles - using Tailwind 4 compatible approach */
+/* Removing direct @apply statements since some utility classes like bg-white are causing issues */
+
+/* Chart customizations for dark mode */
+.dark .recharts-cartesian-grid line {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.dark .recharts-cartesian-axis-line {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.dark .recharts-cartesian-axis-tick-line {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.dark .recharts-text {
+  fill: rgba(255, 255, 255, 0.7);
+}
+
+.dark .recharts-reference-line line {
+  stroke: rgba(255, 255, 255, 0.25);
+}
+
+/* Additional dark mode chart styles */
+.dark .recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: rgba(26, 32, 44, 0.9) !important;
+  border-color: rgba(74, 85, 104, 0.5) !important;
+}
+
+.dark .recharts-default-tooltip .recharts-tooltip-label,
+.dark .recharts-default-tooltip .recharts-tooltip-item {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark .recharts-brush rect.recharts-brush-slide {
+  fill: rgba(45, 55, 72, 0.6);
+  stroke: rgba(113, 128, 150, 0.5);
+}
+
+.dark .recharts-tooltip-cursor {
+  stroke: rgba(255, 255, 255, 0.2);
+}

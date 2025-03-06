@@ -1,61 +1,98 @@
-# MambaStock: Selective state space model for stock prediction
+# StockCaster Clarifier
 
-Mamba (Structured state space sequence models with selection mechanism and scan module, S6) has achieved remarkable success in sequence modeling tasks. This paper proposes a Mamba-based model to predict the stock price.
+## Overview
 
-## Requirements
+StockCaster Clarifier is an advanced web-based platform for visualizing and analyzing stock market data. It provides interactive charts with customizable technical indicators, allowing users to gain insights from time series financial data.
 
-The code has been tested running under Python 3.7.4, with the following packages and their dependencies installed:
-```
-numpy==1.16.5
-matplotlib==3.1.0
-sklearn==0.21.3
-pandas==0.25.1
-pytorch==1.7.1
-```
+## Features
 
-The stock data used in this repository was downloaded from [TuShare](https://tushare.pro/). The stock data on [TuShare](https://tushare.pro/) are with public availability. Some code of the Mamba model is from https://github.com/alxndrTL/mamba.py
+- **Interactive Stock Charts**: View candlestick charts with adjustable time frames
+- **Technical Indicators**: Toggle various indicators on/off (SMA, EMA, Bollinger Bands, etc.)
+- **CSV Data Import**: Load your own stock data or use the provided sample data
+- **Time Frame Selection**: Easily switch between different time periods
+- **Data Statistics**: View key statistics about the selected data range
+- **Responsive Design**: Works on both desktop and mobile devices
+
+## Technologies Used
+
+- **Next.js**: React framework for building the web application
+- **TypeScript**: For type-safe code
+- **Recharts**: For rendering interactive charts
+- **Tailwind CSS**: For styling the user interface
+- **Papa Parse**: For parsing CSV data files
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 14.x or higher
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd stockcaster-clarifier
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Run the development server:
+   ```
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
 ## Usage
 
-```
-python main.py
-```
+### Loading Data
 
-## Options
+StockCaster Clarifier can load stock data from CSV files. The application expects CSV files with at least the following columns:
+- `datetime`: The timestamp for each data point
+- `open`, `high`, `low`, `close`: Price data
+- Additional technical indicators (optional)
 
-We adopt an argument parser by package  `argparse` in Python, and the options for running code are defined as follow:
+You can either:
+- Use the "Load Sample Data" button to load the provided SPY data
+- Upload your own CSV file using the file uploader
 
-```python
-parser = argparse.ArgumentParser()
-parser.add_argument('--use-cuda', default=False,
-                    help='CUDA training.')
-parser.add_argument('--seed', type=int, default=1, help='Random seed.')
-parser.add_argument('--epochs', type=int, default=100,
-                    help='Number of epochs to train.')
-parser.add_argument('--lr', type=float, default=0.01,
-                    help='Learning rate.')
-parser.add_argument('--wd', type=float, default=1e-5,
-                    help='Weight decay (L2 loss on parameters).')
-parser.add_argument('--hidden', type=int, default=16,
-                    help='Dimension of representations')
-parser.add_argument('--layer', type=int, default=2,
-                    help='Num of layers')
-parser.add_argument('--n-test', type=int, default=300,
-                    help='Size of test set')
-parser.add_argument('--ts-code', type=str, default='601988',
-                    help='Stock code')                    
+### Customizing the Chart
 
-args = parser.parse_args()
-args.cuda = args.use_cuda and torch.cuda.is_available()
-```
+- Use the time frame selector to change the date range
+- Toggle technical indicators on/off from the Indicators panel
+- Hover over the chart to see detailed values at specific points
 
-## Citation
+## Project Structure
 
 ```
-@article{shi2024mamba,
-  title={MambaStock: Selective state space model for stock prediction},
-  author={Zhuangwei Shi},
-  journal={arXiv preprint arXiv:2402.18959},
-  year={2024},
-}
+stockcaster-clarifier/
+├── public/
+│   └── data/           # Sample data files
+├── src/
+│   ├── app/            # Next.js app router
+│   ├── components/     # React components
+│   │   ├── charts/     # Chart components
+│   │   ├── layout/     # Layout components
+│   │   └── ui/         # UI components
+│   ├── lib/            # Utility functions and context
+│   ├── styles/         # Global styles
+│   └── types/          # TypeScript type definitions
+└── ...configuration files
 ```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details. 
