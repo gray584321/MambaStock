@@ -1,13 +1,21 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  /* config options here */
-  reactStrictMode: false, // Disable strict mode for better performance
+
+// Check if using Turbopack
+const isTurbopack = process.env.npm_lifecycle_script?.includes('--turbo') || 
+                   process.env.NEXT_TURBOPACK === '1';
+
+// Base configuration shared between bundlers
+const baseConfig = {
+  reactStrictMode: true,
+  // swcMinify is deprecated in Next.js 15, removed
+  
+  transpilePackages: ['lightweight-charts'],
+  experimental: {
+    optimizePackageImports: ['recharts'],
+  },
+  
   images: {
     unoptimized: true, // Use unoptimized images for better performance
-  },
-  experimental: {
-    // Optimize package imports for better performance
-    optimizePackageImports: ['recharts'],
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -20,5 +28,29 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 };
+
+// Webpack-specific configuration
+const webpackConfig = {
+  ...baseConfig,
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        module: false,
+      };
+    }
+    return config;
+  },
+};
+
+// Turbopack-specific configuration (no webpack config)
+const turbopackConfig = {
+  ...baseConfig,
+  // No webpack configuration for Turbopack
+};
+
+// Export the appropriate configuration based on the bundler
+const nextConfig = isTurbopack ? turbopackConfig : webpackConfig;
 
 module.exports = nextConfig; 
